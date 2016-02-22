@@ -1,8 +1,9 @@
 module.exports = {
     entry: "./app/assets/frontend/main.jsx",
     output: {
-        path: __dirname + "app/assets/javascripts",
-        filename: "bundle.js"
+        path: __dirname + "/app/assets/javascripts",
+        filename: "bundle.js",
+        library: "ReactApp"
     },
     resolve: {
       extensions: ['', '.js', '.jsx']
