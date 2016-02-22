@@ -23,10 +23,10 @@ export class Main extends React.Component {
 }
 
 let documentReady = () => {
-  ReactDOM.render(
-    <Main />,
-      document.getElementById('react')
-  );
+  let reactNode = document.getElementById('react')
+  if (reactNode) {
+    ReactDOM.render(<Main />, reactNode);
+  }
 }
 
 $(documentReady);
