@@ -64,7 +64,7 @@ var ReactApp =
 	
 	var _Index2 = _interopRequireDefault(_Index);
 	
-	var _Follow = __webpack_require__(/*! ./components/Follow */ 232);
+	var _Follow = __webpack_require__(/*! ./components/Follow */ 233);
 	
 	var _Follow2 = _interopRequireDefault(_Follow);
 	
@@ -20239,8 +20239,6 @@ var ReactApp =
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	_TweetActions2.default.getAllTweets();
-	
 	var getAppState = function getAppState() {
 	  return { tweetsList: _TweetStore2.default.getAll() };
 	};
@@ -20261,6 +20259,7 @@ var ReactApp =
 	  _createClass(Index, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      _TweetActions2.default.getAllTweets();
 	      _TweetStore2.default.addChangeListener(this._onChange);
 	    }
 	  }, {
@@ -26341,7 +26340,7 @@ var ReactApp =
 	
 	var _constants2 = _interopRequireDefault(_constants);
 	
-	var _AppEventEmitter2 = __webpack_require__(/*! ./AppEventEmitter */ 234);
+	var _AppEventEmitter2 = __webpack_require__(/*! ./AppEventEmitter */ 231);
 	
 	var _AppEventEmitter3 = _interopRequireDefault(_AppEventEmitter2);
 	
@@ -26398,6 +26397,62 @@ var ReactApp =
 
 /***/ },
 /* 231 */
+/*!********************************************************!*\
+  !*** ./app/assets/frontend/stores/AppEventEmitter.jsx ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _events = __webpack_require__(/*! events */ 232);
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CHANGE_EVENT = "CHANGE";
+	
+	var AppEventEmitter = function (_EventEmitter) {
+	  _inherits(AppEventEmitter, _EventEmitter);
+	
+	  function AppEventEmitter() {
+	    _classCallCheck(this, AppEventEmitter);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(AppEventEmitter).apply(this, arguments));
+	  }
+	
+	  _createClass(AppEventEmitter, [{
+	    key: "emitChange",
+	    value: function emitChange() {
+	      this.emit(CHANGE_EVENT);
+	    }
+	  }, {
+	    key: "addChangeListener",
+	    value: function addChangeListener(callback) {
+	      this.on(CHANGE_EVENT, callback);
+	    }
+	  }, {
+	    key: "removeChangeListener",
+	    value: function removeChangeListener(callback) {
+	      this.removeListener(CHANGE_EVENT, callback);
+	    }
+	  }]);
+	
+	  return AppEventEmitter;
+	}(_events.EventEmitter);
+
+	exports.default = AppEventEmitter;
+
+/***/ },
+/* 232 */
 /*!****************************!*\
   !*** ./~/events/events.js ***!
   \****************************/
@@ -26704,7 +26759,7 @@ var ReactApp =
 
 
 /***/ },
-/* 232 */
+/* 233 */
 /*!***************************************************!*\
   !*** ./app/assets/frontend/components/Follow.jsx ***!
   \***************************************************/
@@ -26722,7 +26777,7 @@ var ReactApp =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _UserStore = __webpack_require__(/*! ../stores/UserStore */ 233);
+	var _UserStore = __webpack_require__(/*! ../stores/UserStore */ 234);
 	
 	var _UserStore2 = _interopRequireDefault(_UserStore);
 	
@@ -26838,7 +26893,7 @@ var ReactApp =
 	exports.default = Follow;
 
 /***/ },
-/* 233 */
+/* 234 */
 /*!**************************************************!*\
   !*** ./app/assets/frontend/stores/UserStore.jsx ***!
   \**************************************************/
@@ -26860,7 +26915,7 @@ var ReactApp =
 	
 	var _constants2 = _interopRequireDefault(_constants);
 	
-	var _AppEventEmitter2 = __webpack_require__(/*! ./AppEventEmitter */ 234);
+	var _AppEventEmitter2 = __webpack_require__(/*! ./AppEventEmitter */ 231);
 	
 	var _AppEventEmitter3 = _interopRequireDefault(_AppEventEmitter2);
 	
@@ -26915,62 +26970,6 @@ var ReactApp =
 	});
 	
 	exports.default = UserStore;
-
-/***/ },
-/* 234 */
-/*!********************************************************!*\
-  !*** ./app/assets/frontend/stores/AppEventEmitter.jsx ***!
-  \********************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _events = __webpack_require__(/*! events */ 231);
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CHANGE_EVENT = "CHANGE";
-	
-	var AppEventEmitter = function (_EventEmitter) {
-	  _inherits(AppEventEmitter, _EventEmitter);
-	
-	  function AppEventEmitter() {
-	    _classCallCheck(this, AppEventEmitter);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(AppEventEmitter).apply(this, arguments));
-	  }
-	
-	  _createClass(AppEventEmitter, [{
-	    key: "emitChange",
-	    value: function emitChange() {
-	      this.emit(CHANGE_EVENT);
-	    }
-	  }, {
-	    key: "addChangeListener",
-	    value: function addChangeListener(callback) {
-	      this.on(CHANGE_EVENT, callback);
-	    }
-	  }, {
-	    key: "removeChangeListener",
-	    value: function removeChangeListener(callback) {
-	      this.removeListener(CHANGE_EVENT, callback);
-	    }
-	  }]);
-	
-	  return AppEventEmitter;
-	}(_events.EventEmitter);
-
-	exports.default = AppEventEmitter;
 
 /***/ },
 /* 235 */
