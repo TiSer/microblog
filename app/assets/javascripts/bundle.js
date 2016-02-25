@@ -26238,7 +26238,7 @@ var ReactApp =
 	        null,
 	        _react2.default.createElement(
 	          "ul",
-	          { className: "colleciton" },
+	          { className: "collection" },
 	          tweets
 	        )
 	      );
@@ -26292,7 +26292,7 @@ var ReactApp =
 	      return _react2.default.createElement(
 	        "li",
 	        { className: "collection-item avatar" },
-	        _react2.default.createElement("img", { className: "circle", src: this.props.gravatar }),
+	        _react2.default.createElement("img", { src: this.props.gravatar, className: "circle" }),
 	        _react2.default.createElement(
 	          "span",
 	          { className: "title" },

@@ -7,7 +7,7 @@ export default class TweetList extends React.Component {
 
     return (
       <div>
-        <ul className="colleciton">
+        <ul className="collection">
           {tweets}
         </ul>
       </div>
